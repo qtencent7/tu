@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script src="./van.js"></script>
+<script>
+    const {button} = van.tags
+    function btnClick() {
+        alert("hhhh")
+    }
+    const e = button({onclick: btnClick}, "click me");
+    van.add(document.body, e)
+</script>
+</body>
+</html>
