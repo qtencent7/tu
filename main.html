@@ -29,8 +29,9 @@ const tagNs = new Proxy(function (name, ...args) {
         return tag.bind(undefined, name)
     }
 })
+console.log(tagNs)
 const tu = {tags: tagNs}
-const {h1, button} = tu.tags
+const {h1, button, ul, li} = tu.tags
 function state(value) {
     return {
         binding: null,
@@ -42,9 +43,20 @@ function btnClick() {
     count.value++
     count.binding.innerText = count.value
 }
-const dom = h1({}, count, button({onclick: btnClick}, "click me"))
+const dom = h1({}, "count", button({onclick: btnClick}, "click me"))
 const root = document.getElementById("app");
 root.appendChild(dom)
+const uldom = ul({}, '')
+for (let i = 0; i < 5; i++) {
+    let lidom
+    if (i === 4) {
+        lidom = li({}, count)
+    } else {
+        lidom = li({}, i)
+    }
+    uldom.appendChild(lidom)
+}
+root.appendChild(uldom)
 </script>
 </body>
 </html>
