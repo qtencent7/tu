@@ -6,42 +6,13 @@
 </head>
 <body>
 <div id="app"></div>
+<script src="./tu.js"></script>
 <script>
-const tagNs = new Proxy(function (name, ...args) {
-    const container = document.createElement("div");
-    const element = document.createElement(name);
-    container.appendChild(element)
-    for (const key in args[0]) {
-        element.addEventListener(key.slice(2), args[0][key])
-    }
-    if (typeof args[1] === 'object') {
-        args[1].binding = element
-        element.textContent = args[1].value
-    } else {
-        element.textContent = args[1]
-    }
-
-    if (args[2])
-        container.appendChild(args[2])
-    return container
-}, {
-    get: function(tag, name, receiver) {
-        return tag.bind(undefined, name)
-    }
-})
-console.log(tagNs)
-const tu = {tags: tagNs}
 const {h1, button, ul, li} = tu.tags
-function state(value) {
-    return {
-        binding: null,
-        value
-    }
-}
-let count = state(1)
+const stateinstance = tu.state
+let count = stateinstance(1)
 function btnClick() {
     count.value++
-    count.binding.innerText = count.value
 }
 const dom = h1({}, "count", button({onclick: btnClick}, "click me"))
 const root = document.getElementById("app");

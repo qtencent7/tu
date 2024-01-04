@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<script src="./tu.js"></script>
+<script>
+    const {ul, li} = tu.tags
+    const data = [1,2,3,4,5]
+    const uldom = ul({}, "");
+    for (let i = 0; i < data.length; i++) {
+        const lidom = li({}, data[i]);
+        uldom.appendChild(lidom)
+    }
+    const root = document.getElementById("app");
+    root.appendChild(uldom)
+</script>
+</body>
+</html>

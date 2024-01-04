@@ -3,16 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+
+    </style>
 </head>
 <body>
-<script src="./van.js"></script>
+<div id="app"></div>
+<script src="./tu.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.4.3/echarts.min.js" integrity="sha512-EmNxF3E6bM0Xg1zvmkeYD3HDBeGxtsG92IxFt1myNZhXdCav9MzvuH/zNMBU1DmIPN6njrhX1VTbqdJxQ2wHDg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script>
-    const {button} = van.tags
-    function btnClick() {
-        alert("hhhh")
-    }
-    const e = button({onclick: btnClick}, "click me");
-    van.add(document.body, e)
+    const {span, input, button, div} = tu.tags
+    const loginSpan = span({}, "登录账号");
+    const loginInput = input({}, "");
+
+    const passwordSpan = span({}, "登录密码");
+    const passwordInput = input({}, "");
+
+    const qrcodeSpan = span({}, "验证码");
+    const qrcodeInput = input({}, "");
+
+
+    const loginDiv = div({}, "", loginSpan, loginInput);
+    const passwordDiv = div({}, "", passwordSpan, passwordInput);
+    const qrcodeDiv = div({}, "", qrcodeSpan, qrcodeInput);
+
+    const buttonC = button({onclick: () => {alert("hahaha")}}, "login");
+
+    const rootdom = document.getElementById("app");
+
+    const container = div({}, "", loginDiv, passwordDiv, qrcodeDiv, buttonC);
+    rootdom.appendChild(container)
+
 </script>
 </body>
 </html>

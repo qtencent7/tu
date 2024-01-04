@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="app"></div>
+<button onclick="changediv()">click me</button>
+<script>
+    const divElement = document.createElement("div");
+    const spanElement = document.createElement("span");
+    spanElement.innerText = "span"
+    divElement.innerText = "div"
+    divElement.appendChild(spanElement)
+    const root = document.getElementById("app");
+    root.appendChild(divElement)
+    function changediv() {
+        divElement.textContent ="div2"
+    }
+</script>
+</body>
+</html>
